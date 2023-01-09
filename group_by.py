@@ -7,7 +7,10 @@ mydb = mysql.connector.connect(
   password="password"
 )
 print(mydb)
-mycursor = mydb.cursor()
-mycursor.execute("SHOW DATABASES")
-for x in mycursor:
-  print(x)
+cur = mydb.cursor()
+
+cur.execute("SELECT COUNT(*) FROM glass_db.glass GROUP BY Class")
+
+for item in cur:
+    print(item)
+
